@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Scraper</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit-icons.min.js"></script>
+</head>
+<body>
+    <div class="uk-container">
+        <h1 class="uk-heading-small">Scraper</h1>
+        <div class="uk-margin uk-card uk-card-default uk-card-body">
+            <div class="uk-margin">
+                <a class="uk-button uk-button-default" href="refresh">Refresh</a>
+            </div>
+            <div class="uk-margin">
+                <table>
+                    <tr th:each="b:${blogs}">
+                        <td>
+                            <img class="uk-border-circle" width="20" height="20" th:src="${b.imageLink}" alt="Avatar">
+                        </td>
+                        <td>
+                            <a th:href="${b.blogLink}" th:text="${b.title}"></a>
+                        </td>
+                        <td>
+                            <span class="uk-text-meta" th:text="${b.dateString}"></span>
+                        </td>
+                        <td>
+                            <a th:href="${b.authorLink}" th:text="${b.author}"></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <!--
+        <div class="uk-margin uk-card uk-card-default" th:each="b:${blogs}">
+            <div class="uk-card-header">
+                <div class="uk-grid-small uk-flex-middle" uk-grid>
+                    <div class="uk-width-auto">
+                        <img class="uk-border-circle" width="40" height="40" th:src="${b.imageLink}" alt="Avatar">
+                    </div>
+                    <div class="uk-width-expand">
+                        <h3 class="uk-card-title uk-margin-remove-bottom"><span th:text="${b.title}"></span></h3>
+                        <p class="uk-text-meta uk-margin-remove-top" th:text="${b.dateString}"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uk-card-body">
+                <p>Written by <a th:href="${b.authorLink}" th:text="${b.author}"></a>.</p>
+            </div>
+            <div class="uk-card-footer">
+                <a th:href="${b.blogLink}" class="uk-button uk-button-text">Read more</a>
+            </div>
+        </div>
+        -->
+    </div>
+</body>
+</html>
